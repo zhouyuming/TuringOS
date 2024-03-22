@@ -5,6 +5,17 @@
 - int 0x10
 
 ```s
+[org 0x7c00]
+
+mov ax, 3
+int 0x10
+
+mov ax, 0
+mov ds, ax
+mov es, ax
+mov ss, ax
+mov sp, 0x7c00
+
 mov si, booting
 call print
 
@@ -24,5 +35,9 @@ print:
     ret
 
 booting:
-    db "Booting Onix...", 10, 13, 0; \n\r
+    db "Booting TuringOS...", 10, 13, 0; \n\r
+
+times 510 - ($ - $$) db 0
+
+db 0x55, 0xaa
 ```
