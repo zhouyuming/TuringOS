@@ -24,4 +24,5 @@ print:
     ret
 
 booting:
-    
+    db "Booting Onix...", 10, 13, 0; \n\r
+```
