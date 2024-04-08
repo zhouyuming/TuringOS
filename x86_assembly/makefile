@@ -15,8 +15,16 @@ qemu: master.img
 
 .PHONY: vdi
 vdi: master.img
-	qemu-img convert -f raw -O vdi master.img master.vdi	
+	qemu-img convert -f raw -O vdi master.img master.vdi
+
+.PHONY: vmdk
+vmdk: master.img
+	qemu-img convert -O vmdk master.img master.vmdk	
 
 .PHONY: clean
 clean:
 	rm -rf *.bin
+	rm -rf *.tags
+	rm -rf *.vdi
+	rm -rf *.vmdk
+	rm -rf *.img
